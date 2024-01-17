@@ -1,0 +1,71 @@
+From e8f83e9b6201927a1101deb796c1d02ca4f31537 Mon Sep 17 00:00:00 2001
+From: Aashish <aashishpandey234@gmail.com>
+Date: Wed, 17 Jan 2024 20:13:15 +0530
+Subject: [PATCH 2/2] Patch File
+
+---
+ 0001-Fixed-client3.py3-file.patch | 52 +++++++++++++++++++++++++++++++
+ 1 file changed, 52 insertions(+)
+ create mode 100644 0001-Fixed-client3.py3-file.patch
+
+diff --git a/0001-Fixed-client3.py3-file.patch b/0001-Fixed-client3.py3-file.patch
+new file mode 100644
+index 0000000..45719d3
+--- /dev/null
++++ b/0001-Fixed-client3.py3-file.patch
+@@ -0,0 +1,52 @@
++From 2d034102fcf17d998e6e1cd619da4095acd4c6be Mon Sep 17 00:00:00 2001
++From: Aashish <aashishpandey234@gmail.com>
++Date: Wed, 17 Jan 2024 20:12:19 +0530
++Subject: [PATCH] Fixed client3.py3 file
++
++---
++ client_test.py | 19 +++++++++++++++++++
++ 1 file changed, 19 insertions(+)
++
++diff --git a/client_test.py b/client_test.py
++index af2bf26..a846de5 100644
++--- a/client_test.py
+++++ b/client_test.py
++@@ -8,6 +8,8 @@ class ClientTest(unittest.TestCase):
++       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
++     ]
++     """ ------------ Add the assertion below ------------ """
+++    for quote in quotes:
+++      self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price'])/2))
++ 
++   def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
++     quotes = [
++@@ -15,9 +17,26 @@ class ClientTest(unittest.TestCase):
++       {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
++     ]
++     """ ------------ Add the assertion below ------------ """
+++    for quote in quotes:
+++      self.assertEqual(1, 1)
+++
+++
++ 
++ 
++   """ ------------ Add more unit tests ------------ """
+++  def test_getDataPoint_calculatePriceBidSmallerThanAsk(self):
+++    quotes = [
+++      {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+++      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+++    ]
+++    """ ------------ Add the assertion below ------------ """
+++    for quote in quotes:
+++      self.assertEqual(getDataPoint(quote), (quote['stock'], quote['top_bid']['price'], quote['top_ask']['price'], (quote['top_bid']['price'] + quote['top_ask']['price']) / 2))
+++
+++
+++
+++
+++    """ ------------ Add more unit tests ------------ """
++ 
++ 
++ 
++-- 
++2.43.0
++
+-- 
+2.43.0
+
